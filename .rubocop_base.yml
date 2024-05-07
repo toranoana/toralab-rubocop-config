@@ -1,0 +1,95 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rake
+AllCops:
+  NewCops: enable
+  SuggestExtensions: true
+Rails:
+  Enabled: true
+
+inherit_mode:
+  merge:
+    - Exclude
+
+# クラスあたりの長さを制限
+Metrics/ClassLength:
+  Max: 120
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+# メソッドあたりの長さを制限
+Metrics/MethodLength:
+  Max: 20
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+# モジュールあたりの長さを制限
+Metrics/ModuleLength:
+  Max: 200
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+# ブロックの長さを制限
+Metrics/BlockLength:
+  Max: 50
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+  Exclude:
+    # テストコードは長くなりやすいので除外
+    - 'spec/**/*'
+    - 'test/**/*'
+# パラメータ数を制限
+Metrics/ParameterLists:
+  Max: 5
+  MaxOptionalParameters: 3
+
+# 複雑度による縛りは見送る まずは他のMetricsで対応する
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+# 順番強制は既存の修正が多くなりすぎるため一旦見送る
+
+Rails/ActionOrder:
+  Enabled: false
+Rails/ActiveRecordCallbacksOrder:
+  Enabled: false
+
+# ステータスコードば数字のままのほうが見やすい場合もあり書き換えるほどではないので無効化
+Rails/HttpStatus:
+  Enabled: false
+# 変数名でわかりやすくなっていれば問題ないとして無効化
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+# render_404等、既存で多用しているメソッドも検出されるので無効化
+Naming/VariableNumber:
+  Enabled: false
+# classを分ける書き方は冗長になる可能性もあるので無効化
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+# ライブラリによる追加もあるので無効化
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+# 以降はRubyの専用記法を強制するルールだが、あえて書き直すほどではないため無効化
+
+Style/NumericPredicate:
+  Enabled: false
+Style/SymbolArray:
+  Enabled: false
+Style/WordArray:
+  Enabled: false

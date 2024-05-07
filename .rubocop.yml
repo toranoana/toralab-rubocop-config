@@ -1,0 +1,77 @@
+# TODO: 利用しているライブラリがあればコメントアウトを外して追加する
+# 必要なければコメントごと削除する
+# require:
+#   - rubocop-capybara
+#   - rubocop-factory_bot
+#   - rubocop-rspec
+#   - rubocop-rspec_rails
+AllCops:
+  # TODO: 利用しているRubyバージョンを追加する
+  TargetRubyVersion: 3.2
+  # TODO: 利用しているRailsバージョンを追加する
+  TargetRailsVersion: 6.1
+  Exclude:
+    - 'db/migrate/**/*'
+    - 'db/*schema.rb'
+    - 'tmp/**/*'
+    - 'log/**/*'
+    - 'vendor/**/*'
+    - 'bin/**/*'
+    # TODO: プロダクト独自の除外ディレクトリを追加する
+    # 除外可能なもの
+    # - Ruby以外のファイルを格納するディレクトリ
+    # - 自動生成コードを格納するディレクトリ
+    # - 外部で生成されたライブラリやファイル群
+    # 例
+    # - 'public/**/*'
+    # - 'node_modules/**/*'
+inherit_from:
+  - .rubocop_base.yml
+  - .rubocop_todo.yml
+
+# TODO: Metricsで必要な設定があればコメントアウトを外して値を変更する。
+# ただし、許容値以上にはしないこと
+# 必要がない設定はコメントごと削除する
+
+# # クラスあたりの長さを制限
+# Metrics/ClassLength:
+#   Max: 120 # 200まで許容
+# # メソッドあたりの長さを制限
+# Metrics/MethodLength:
+#   Max: 20 # 40まで許容
+# # モジュールあたりの長さを制限
+# Metrics/ModuleLength:
+#   Max: 200 # 400まで許容
+# # ブロックの長さを制限
+# Metrics/BlockLength:
+#   Max: 50 # 100まで許容
+# # パラメータ数を制限
+# Metrics/ParameterLists:
+#   Max: 5 # 8まで許容
+#   MaxOptionalParameters: 3 # 4まで許容
+
+# TODO: Railsを利用していて、staging環境を入れる場合はコメントアウトを外す。他に必要な環境があれば追加する。
+# Rails/UnknownEnv:
+#   Environments:
+#     - development
+#     - test
+#     - staging
+#     - production
+
+# TODO: 既存プロダクトの場合、以下の設定のコメントアウトを外して追加する。新規プロダクトの場合は以下のコメントを削除する
+# 既存プロダクトであっても可能であれば以下の設定を入れないことが望ましい
+
+# # 上長コードをblankに変えてくれるが、既存コードの修正が多くなるため無効化
+# Rails/Blank:
+#   Enabled: false
+# # 時間の冗長を直してくれるが、既存コードの修正が多くなるため無効化
+# Rails/DurationArithmetic:
+#   Enabled: false
+# # 期間の冗長な書き方を直してくれるが、既存コードの修正が多くなるため無効化
+# Rails/ExpandedDateRange:
+#   Enabled: false
+# # 挙動やパフォーマンスが変わってしまう可能性があるため無効化
+# Style/FrozenStringLiteralComment:
+#   Enabled: false
+
+# TODO: TODOコメントやその他の不要なコメントは削除する
